@@ -4,7 +4,7 @@ local LOOT_ROLL_TYPE_PASS = _G.LOOT_ROLL_TYPE_PASS or 0
 local LOOT_ROLL_TYPE_NEED = _G.LOOT_ROLL_TYPE_NEED or 1
 local LOOT_ROLL_TYPE_GREED = _G.LOOT_ROLL_TYPE_GREED or 2
 local LOOT_ROLL_TYPE_DISENCHANT = _G.LOOT_ROLL_TYPE_DISENCHANT or 3
-local NET_UPDATES, CONFIRM_RETRY = 5, 0.5
+local NET_UPDATES, CONFIRM_RETRY = 5, 0.015625
 local After = C_Timer.After
 local Ticker = C_Timer.NewTicker
 local tremove = table.remove
@@ -22,6 +22,9 @@ end
 local LagMonitor,NetStats
 NetStats = function()
   if not AutoRollNConfirmDBC.smartdelay then
+    if LagMonitor.roundtrip then
+      LagMonitor.roundtrip = nil
+    end
     return
   end
   local bandwidthIn, bandwidthOut, latencyHome, latencyWorld = GetNetStats()

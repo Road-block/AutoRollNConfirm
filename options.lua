@@ -1,5 +1,6 @@
 local addonName, addon = ...
 local L = addon.L
+local categoryName = L["AutoConfirm BOP & Roll"]
 
 local LOOT_ROLL_TYPE_PASS = _G.LOOT_ROLL_TYPE_PASS or 0
 local LOOT_ROLL_TYPE_NEED = _G.LOOT_ROLL_TYPE_NEED or 1
@@ -8,12 +9,12 @@ local LOOT_ROLL_TYPE_DISENCHANT = _G.LOOT_ROLL_TYPE_DISENCHANT or 3
 
 function addon.OnSettingChanged(setting,value)
   --[[if setting.variableKey == "varkey" and value == true then
-
+    -- do some option related update if needed
   end]]
 end
 
 function addon:CreateSettings()
-  addon._category = Settings.RegisterVerticalLayoutCategory(addonName)
+  addon._category = Settings.RegisterVerticalLayoutCategory(categoryName)
   local variableTable
   do
     variableTable = AutoRollNConfirmDBC
