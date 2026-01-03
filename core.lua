@@ -128,7 +128,7 @@ local function SoloLooting()
       for i=1,MAX_RAID_MEMBERS do
         local unit = raidUnit[i]
         if UnitExists(unit) and not UnitIsUnit("player",unit) then
-          if UnitIsConnected(unit) and UnitIsVisible(unit) and UnitInPhase(unit) then
+          if UnitPlayerControlled(unit) and UnitIsConnected(unit) and UnitIsVisible(unit) and UnitInPhase(unit) then
             return
           end
         end
@@ -136,7 +136,7 @@ local function SoloLooting()
     elseif IsInGroup() then
       for i=1,MAX_PARTY_MEMBERS do
         local unit = partyUnit[i]
-        if UnitIsConnected(unit) and UnitIsVisible(unit) and UnitInPhase(unit) then
+        if UnitPlayerControlled(unit) and UnitIsConnected(unit) and UnitIsVisible(unit) and UnitInPhase(unit) then
           return
         end
       end
